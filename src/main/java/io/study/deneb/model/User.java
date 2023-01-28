@@ -1,16 +1,16 @@
 package io.study.deneb.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
 public class User {
 
-  @Id @GeneratedValue
-  private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
   private String username;
   private String password;
   private String roles;
@@ -23,11 +23,11 @@ public class User {
     this.roles = roles;
   }
 
-  public Long getId() {
+  public UUID getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 
