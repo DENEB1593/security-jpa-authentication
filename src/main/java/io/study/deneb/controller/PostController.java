@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/posts")
@@ -25,8 +26,9 @@ public class PostController {
   }
 
   @GetMapping("/{id}")
-  public Post findById(@PathVariable("id") Post post){
-    return post;
+  public Post findById(@PathVariable("id") UUID id){
+    return postRepository.findById(id)
+      .orElseThrow(IllegalArgumentException::new);
   }
 
 }
