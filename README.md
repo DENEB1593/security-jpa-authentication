@@ -10,6 +10,7 @@
 * lombok 라이브러리는 미사용한다.
 * User 모델과 UserDetails 구현체는 별도로 분리한다.
 * 간단한 HomeController를 생성하여 ROLE 별 접근 테스트를 진행한다.
+* Post <-> PostDto Mapping를 구현한다. (ModelMapper와 같은 라이브러리는 사용하지 않는다.)
 
 ### [이력]
 * 01/28: Jakarta EE 10, UUID 기본키활용 가능하여 수정 <br>
