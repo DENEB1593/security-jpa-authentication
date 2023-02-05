@@ -23,15 +23,17 @@ public class Application {
                                       UserRepository userRepository,
                                       PasswordEncoder encoder) {
     return args -> {
+      User deneb = new User("deneb", encoder.encode("1234"), "ROLE_USER");
+      User admin = new User("admin", encoder.encode("1234"), "ROLE_USER,ROLE_ADMIN");
       // Init User
-      userRepository.save(new User("deneb", encoder.encode("1234"), "ROLE_USER"));
-      userRepository.save(new User("admin", encoder.encode("1234"), "ROLE_USER,ROLE_ADMIN"));
+      userRepository.save(deneb);
+      userRepository.save(admin);
 
       // Init Post
-      postRepository.save(new Post("hello everyone", "slug1",  "for everyone", "deneb"));
-      postRepository.save(new Post("something wrong", "slug2",  "there's no content", "deneb"));
-      postRepository.save(new Post("thx!", "slug3",  "thanks for that!", "deneb"));
-      postRepository.save(new Post("not good", "slug4",  "for good", "deneb"));
+      postRepository.save(new Post("hello everyone", "slug1",  "for everyone", deneb.getUsername()));
+      postRepository.save(new Post("something wrong", "slug2",  "there's no content", admin.getUsername()));
+      postRepository.save(new Post("thx!", "slug3",  "thanks for that!", deneb.getUsername()));
+      postRepository.save(new Post("not good", "slug4",  "for good", deneb.getUsername()));
     };
   }
 

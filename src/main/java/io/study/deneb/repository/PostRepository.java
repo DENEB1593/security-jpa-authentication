@@ -1,13 +1,13 @@
 package io.study.deneb.repository;
 
 import io.study.deneb.model.Post;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.UUID;
 
-public interface PostRepository extends CrudRepository<Post, UUID>  {
+public interface PostRepository extends JpaRepository<Post, UUID> {
 
-  @Override
-  List<Post> findAll();
+
+  List<Post> findByUsername(String usename);
 }

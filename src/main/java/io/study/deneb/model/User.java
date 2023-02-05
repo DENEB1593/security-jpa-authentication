@@ -2,6 +2,8 @@ package io.study.deneb.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -11,9 +13,14 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
+
+  @Column(name = "username")
   private String username;
   private String password;
   private String roles;
+
+  @OneToMany(mappedBy = "username", fetch = FetchType.EAGER)
+  private List<Post> posts = new ArrayList<>();
 
   public User() {}
 

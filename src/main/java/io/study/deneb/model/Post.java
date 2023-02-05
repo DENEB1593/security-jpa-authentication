@@ -1,12 +1,8 @@
 package io.study.deneb.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.StringJoiner;
 import java.util.UUID;
 
 @Entity
@@ -18,17 +14,18 @@ public class Post {
   private String title;
   private String slug;
   private String content;
-  private String author;
+
+  private String username;
   private LocalDateTime publishedOn;
   private LocalDateTime updatedOn;
 
   public Post() {}
 
-  public Post(String title, String slug, String content, String author) {
+  public Post(String title, String slug, String content, String username ) {
     this.title = title;
     this.slug = slug;
     this.content = content;
-    this.author = author;
+    this.username = username;
     this.publishedOn = LocalDateTime.now();
     this.updatedOn = LocalDateTime.now();
   }
@@ -65,12 +62,13 @@ public class Post {
     this.content = content;
   }
 
-  public String getAuthor() {
-    return author;
+
+  public String getUsername() {
+    return username;
   }
 
-  public void setAuthor(String author) {
-    this.author = author;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public LocalDateTime getPublishedOn() {
@@ -96,7 +94,7 @@ public class Post {
       ", title='" + title + '\'' +
       ", slug='" + slug + '\'' +
       ", content='" + content + '\'' +
-      ", author='" + author + '\'' +
+      ", username='" + username + '\'' +
       ", publishedOn=" + publishedOn +
       ", updatedOn=" + updatedOn +
       '}';
