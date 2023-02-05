@@ -12,6 +12,8 @@ public interface PostRepository extends JpaRepository<Post, UUID> {
 
   List<Post> findByUsername(String username);
 
+  Optional<Post> findTopByUsername(String name);
+
   Optional<Post> findById(UUID id);
 
 }
